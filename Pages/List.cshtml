@@ -1,0 +1,42 @@
+﻿@page
+@model pic.Pages.ListModel
+
+@{
+    ViewData["Title"] = "List";
+}
+
+<h1>List</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Picture[0].PictureImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Picture[0].PictureImageType)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Picture) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PictureImage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PictureImageType)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
